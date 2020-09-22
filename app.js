@@ -1,16 +1,18 @@
 const express = require('express');
 const compression = require('compression');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
 
 const morgan = require('./logging/morgan');
 const index = require('./routes/index');
 const email = require('./routes/email');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const logger = require('./logging/logger');
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017';
 
