@@ -30,24 +30,24 @@ router.post('/', async (req, res) => {
   return res.status(201).json({ msg: 'email saved' });
 });
 
-router.get('/', async (req, res) => {
-  try {
-    const emails = await Email.find({});
-    if (emails.length === 0) {
-      return res.status(404).json({ msg: 'emails not found' });
-    }
+// router.get('/', async (req, res) => {
+//   try {
+//     const emails = await Email.find({});
+//     if (emails.length === 0) {
+//       return res.status(404).json({ msg: 'emails not found' });
+//     }
 
-    return res.status(200).json({
-      msg: 'emails found',
-      emails: emails.map(item => item.email)
-    });
-  } catch (err) {
-    logger.error(err);
-    return res.status(500).json({
-      msg: 'something went wrong',
-      err: err.toString()
-    });
-  }
-});
+//     return res.status(200).json({
+//       msg: 'emails found',
+//       emails: emails.map(item => item.email)
+//     });
+//   } catch (err) {
+//     logger.error(err);
+//     return res.status(500).json({
+//       msg: 'something went wrong',
+//       err: err.toString()
+//     });
+//   }
+// });
 
 module.exports = router;
